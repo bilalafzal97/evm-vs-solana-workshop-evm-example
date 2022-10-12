@@ -17,11 +17,15 @@ describe("Counter", function () {
 
         const counterTx = await counter.addCount();
 
-        await counterTx.wait();
+        const counterTxReceipt = await counterTx.wait();
+
+        console.log(counterTxReceipt.events);
 
         const counter2Tx = await counter.addCount();
 
-        await counter2Tx.wait();
+        const counter2TxReceipt = await counter2Tx.wait();
+
+        console.log(counter2TxReceipt.events);
 
         const count2 = await counter.count();
         console.log(count2.toBigInt());
